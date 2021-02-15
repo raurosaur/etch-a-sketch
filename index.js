@@ -1,11 +1,15 @@
+//DOM Elements
 const container = document.getElementById('container'),
 resetButton = document.querySelector('.reset'),
 colorSelector = document.getElementById('colorSelector'),
 numOfBlocks = document.getElementById('number-grids'),
-randomColor = document.getElementById('random-color');
+randomColor = document.getElementById('random');
+let blocks = document.querySelectorAll(".blocks");
 
+//Defaults
 let color = '#000', numBlock = 16, isRandom = false;
 
+//Reset Function
 function reset(){
     container.innerHTML = '';
     let i = 0;
@@ -16,37 +20,56 @@ function reset(){
         container.appendChild(block);
         i++;
     }
+    blocks = document.querySelectorAll(".blocks");
 }
+
+//Creates Initial Grids
 reset();
 
-function getRandomColor(){
-    return Math.floor(Math.random() * 360);
+//Random Color Generator
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
-container.addEventListener('mousemove', (event) => {
-    if(isRandom){
-        color = `hsl(${getRandomColor()}, 100%, 50%)`;
-    }
+//Paint Function
+function paint(event){
+    if(isRandom)
+        color = getRandomColor();
     event.target.style.background = color;
+}
+
+//Paint Start - End
+container.addEventListener('click', (event) => {
+    container.classList.toggle('on');
+    if(container.classList.contains('on'))
+        blocks.forEach(block => block.addEventListener('mouseover', paint));
+    else 
+        blocks.forEach(block => block.removeEventListener('mouseover', paint));
 });
 
+//Color Selector
 colorSelector.addEventListener('input', (event) => {
     color = event.target.value;
 });
 
+//Num Block Change Handler
 numOfBlocks.addEventListener('input', (event) => {
-    numBlock = event.target.value;
+    numBlock = event.target.value; 
+    document.documentElement.style.setProperty("--grid-size",numBlock);
     reset();
 });
 
-randomColor.addEventListener('input', (event) => {
-    if(randomColor.checked){
-        isRandom = true;
-    }
-    else{
-        isRandom = false;
-        color = '#000';
-    }
+//Random Color Button
+randomColor.addEventListener('click', (event) => {
+    event.preventDefault();
+    isRandom = !isRandom;
+    event.target.innerHTML = `Random Color:  ${(isRandom) ? 'On' : "Off"}`;
 });
 
+//Reset Button
 resetButton.addEventListener('click', reset);

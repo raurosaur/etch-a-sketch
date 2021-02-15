@@ -1,3 +1,6 @@
+:root{
+    --grid-size: 16
+}
 body{
     display: flex;
     flex-direction: column;
@@ -18,8 +21,8 @@ body{
     background-color: #FFF;
     height: 500px;
     width: 500px;
-    grid-template-columns: repeat(16, 31.25px);
-    grid-template-rows: repeat(16, 31.25px);
+    grid-template-columns: repeat(var(--grid-size, 16), 1fr);
+    grid-template-rows: repeat(var(--grid-size, 16), 1fr);
 }
 h1{
     background: #669999;
@@ -30,9 +33,7 @@ h1{
 }
 .blocks{
     background-color: #669999;
-    border: 0.5px solid black;
-    height: 31.25px;
-    width: 31.25px;
+    outline: 1px solid black;
 }
 .button{
     display: flex;
@@ -67,6 +68,6 @@ h1{
     flex-direction: column;
 }
 
-#random-color{
-    transform: scale(1.5);
+#random:hover, #random:focus{
+    transform: scale(1.1);
 }
