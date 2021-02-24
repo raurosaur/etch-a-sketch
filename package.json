@@ -4,16 +4,22 @@
   "description": "The Basic Childhood Sketch board on computer",
   "main": "index.js",
   "scripts": {
-    "dev" : "parcel index.html",
+    "dev": "parcel index.html",
     "predeploy": "npm run build",
     "build": "parcel build index.html",
-    "deploy": "gh-pages d build"
+    "deploy": "gh-pages -d build"
   },
-  "keywords": ["etch a sketch", "sketch"],
+  "keywords": [
+    "etch a sketch",
+    "sketch"
+  ],
   "author": "raurosaur",
   "license": "MIT",
   "dependencies": {
     "dom-to-image": "^2.6.0"
   },
-  "homepage": "https://raurosaur.github.io/etch-a-sketch"
+  "homepage": "https://raurosaur.github.io/etch-a-sketch",
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  }
 }

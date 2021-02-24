@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-//DOM Elements
-const container = document.getElementById('container'),
-resetButton = document.querySelector('.reset'),
-colorSelector = document.getElementById('colorSelector'),
-numOfBlocks = document.getElementById('number-grids'),
-randomColor = document.getElementById('random');
-let blocks = document.querySelectorAll(".blocks");
-
-//Defaults
-let color = '#000', numBlock = 16, isRandom = false;
-
-//Reset Function
-function reset(){
-    container.innerHTML = '';
-    let i = 0;
-    console.log(numBlock);
-    while (i < numBlock * numBlock){
-        const block = document.createElement('div');
-        block.classList.add('blocks');
-        container.appendChild(block);
-        i++;
-    }
-    blocks = document.querySelectorAll(".blocks");
-}
-
-//Creates Initial Grids
-reset();
-
-=======
 import domtoimage from "dom-to-image";
 
 const container = document.querySelector("#container");
@@ -51,7 +21,7 @@ function reset() {
   }
 }
 reset();
->>>>>>> 003b5a5 (Revised Interface, download button)
+
 //Random Color Generator
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
@@ -63,7 +33,6 @@ function getRandomColor() {
 }
 
 //Paint Function
-<<<<<<< HEAD
 function paint(event){
     if(isRandom)
         color = getRandomColor();
@@ -100,7 +69,7 @@ randomColor.addEventListener('click', (event) => {
 
 //Reset Button
 resetButton.addEventListener('click', reset);
-=======
+
 function paint({ target }) {
   if (isRandom)
     document.documentElement.style.setProperty("--color", getRandomColor());
@@ -156,5 +125,3 @@ downloadButton.addEventListener('click', () => {
     link.click();
   });
 });
-
->>>>>>> 003b5a5 (Revised Interface, download button)

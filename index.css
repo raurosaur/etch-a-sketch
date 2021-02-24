@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 :root{
     --grid-size: 16
 }
@@ -72,7 +71,7 @@ h1{
 #random:hover, #random:focus{
     transform: scale(1.1);
 }
-=======
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -153,4 +152,3 @@ button{
     width: 4em;
     font-size: 3em;
 }
->>>>>>> 003b5a5 (Revised Interface, download button)
