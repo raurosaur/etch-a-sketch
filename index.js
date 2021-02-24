@@ -21,7 +21,6 @@ function reset() {
   }
 }
 reset();
-
 //Random Color Generator
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
@@ -33,43 +32,6 @@ function getRandomColor() {
 }
 
 //Paint Function
-function paint(event){
-    if(isRandom)
-        color = getRandomColor();
-    event.target.style.background = color;
-}
-
-//Paint Start - End
-container.addEventListener('click', (event) => {
-    container.classList.toggle('on');
-    if(container.classList.contains('on'))
-        blocks.forEach(block => block.addEventListener('mouseover', paint));
-    else 
-        blocks.forEach(block => block.removeEventListener('mouseover', paint));
-});
-
-//Color Selector
-colorSelector.addEventListener('input', (event) => {
-    color = event.target.value;
-});
-
-//Num Block Change Handler
-numOfBlocks.addEventListener('input', (event) => {
-    numBlock = event.target.value; 
-    document.documentElement.style.setProperty("--grid-size",numBlock);
-    reset();
-});
-
-//Random Color Button
-randomColor.addEventListener('click', (event) => {
-    event.preventDefault();
-    isRandom = !isRandom;
-    event.target.innerHTML = `Random Color:  ${(isRandom) ? 'On' : "Off"}`;
-});
-
-//Reset Button
-resetButton.addEventListener('click', reset);
-
 function paint({ target }) {
   if (isRandom)
     document.documentElement.style.setProperty("--color", getRandomColor());
@@ -125,3 +87,4 @@ downloadButton.addEventListener('click', () => {
     link.click();
   });
 });
+
