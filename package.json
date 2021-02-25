@@ -4,10 +4,9 @@
   "description": "The Basic Childhood Sketch board on computer",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel index.html",
-    "predeploy": "npm run build",
-    "build": "parcel build index.html -d build/output",
-    "deploy": "gh-pages -d build"
+    "start": "parcel index.html",
+    "build": "parcel build src/index.html --out-dir docs --public-url ./",
+    "deploy": "npm run build && git add . && git commit -a -m 'latest build' && git push origin gh-pages"
   },
   "keywords": [
     "etch a sketch",
