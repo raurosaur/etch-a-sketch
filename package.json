@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
+    "predeploy": "git add build && git commit -m \"Build\" ",
     "build": "parcel build index.html --out-dir build --public-url ./",
-    "deploy": "npm run build && git add . && git commit -a -m 'latest build' && git push origin gh-pages"
+    "deploy": "git pull --rebase origin gh-pages && git subtree push --prefix build origin gh-pages"
   },
   "keywords": [
     "etch a sketch",
