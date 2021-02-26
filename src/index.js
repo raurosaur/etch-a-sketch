@@ -1,13 +1,13 @@
 import domtoimage from "dom-to-image";
-
 const container = document.querySelector("#container");
 const input = document.querySelectorAll("input");
 const randomColor = document.querySelector("#random-color");
 const resetButton = document.querySelector("#reset");
 const borders = document.querySelector("#borders");
 const defBorder = "1px solid black";
-const downloadButton = document.querySelector('#download');
+const downloadButton = document.querySelector("#download");
 
+let numGrids = 16;
 let isRandom = false;
 let hasBorder = true;
 let draw = true;
@@ -15,11 +15,14 @@ let draw = true;
 //Reset
 function reset() {
   container.innerHTML = "";
-  const style = getComputedStyle(document.documentElement);
-  for (let i = 0; i < style.getPropertyValue("--grid-size") ** 2; ++i) {
-    container.innerHTML += '<div class = "grid"/>';
+  for (let i = 0; i < numGrids * numGrids; ++i) {
+    const div = document.createElement("div");
+    div.setAttribute("tabindex", i + 1);
+    div.className += "grid";
+    container.appendChild(div);
   }
 }
+
 reset();
 //Random Color Generator
 function getRandomColor() {
@@ -40,14 +43,22 @@ function paint({ target }) {
   ).getPropertyValue("--color");
 }
 
-/***************Event Listener***************/
-container.addEventListener("click", () => {
-  const grids = document.querySelectorAll(".grid");
-  grids.forEach((el) => {
-    if (draw) el.addEventListener("mouseover", paint);
-    else el.removeEventListener("mouseover", paint);
-  });
+//togglePaint
+function togglePaint({ target }) {
+  if (target.className === "grid") {
+    if (draw) {
+      target.style.backgroundColor = getComputedStyle(
+        document.documentElement
+      ).getPropertyValue("--color");
+      target.parentElement.addEventListener("mouseover", paint);
+    } else target.parentElement.removeEventListener("mouseover", paint);
+  }
   draw = !draw;
+}
+/***************Event Listener***************/
+container.addEventListener("click", togglePaint);
+container.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") paint(event);
 });
 
 input.forEach((el) =>
@@ -56,7 +67,10 @@ input.forEach((el) =>
       `--${target.name}`,
       target.value
     );
-    if (target.name === "grid-size") reset();
+    if (target.name === "grid-size") {
+      numGrids = target.value;
+      reset();
+    }
   })
 );
 
@@ -76,15 +90,13 @@ borders.addEventListener("click", ({ target }) => {
   );
 });
 
-downloadButton.addEventListener('click', () => {
-  domtoimage.toPng(container)
-  .then(dataUrl => {
+downloadButton.addEventListener("click", () => {
+  domtoimage.toPng(container).then((dataUrl) => {
     const date = new Date();
-    const name = date.toDateString().split(' ').join('_'); 
-    const link = document.createElement('a');
+    const name = date.toDateString().split(" ").join("_");
+    const link = document.createElement("a");
     link.download = `Image_${name}.png`;
     link.href = dataUrl;
     link.click();
   });
 });
-

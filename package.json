@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --out-dir build --public-url ./",
-    "deploy": "git add build && git commit -m \"Build\" && git pull --rebase origin gh-pages && git subtree push --prefix build origin gh-pages"
+    "deploy": "git add build && git commit -m \"Build\" && git subtree push --prefix build origin gh-pages"
   },
   "keywords": [
     "etch a sketch",

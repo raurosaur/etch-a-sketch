@@ -48,7 +48,7 @@ main{
     height: calc(30em / var(--grid-size));
     width: calc(30em / var(--grid-size));
     outline: var(--outline);
-    cursor: url('./Paintbrush.png') 2 36, crosshair;
+    cursor: url('/Paintbrush.71729640.png') 2 36, crosshair;
 }
 
 .grid:focus, .grid:active{
@@ -84,3 +84,5 @@ button{
     width: 4em;
     font-size: 3em;
 }
+
+/*# sourceMappingURL=/src.f41506f2.css.map */
