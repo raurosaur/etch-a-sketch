@@ -7,6 +7,6 @@
 
 Childhood Toy on web
 
-[Live Link!](https://raurosaur.github.io/etch-a-sketch)
+[Live Link!](https://raurosaur.github.io/etch-a-sketch/index.html)
 
 **Now available with a download button!**
