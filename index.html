@@ -11,27 +11,23 @@
     />
     <link rel="stylesheet" href="./src/index.css" />
     <title>Draw It!</title>
+    <script src="./src/index.js" defer></script>
   </head>
   <body>
     <h1>ETCH A SKETCH</h1>
     <main>
       <div class="utilities">
-        <button id="random-color">Random Color: Off</button>
+        <button id="random-color">Random Color: <span class = 'off'>Off</span></button>
         <input type="color" name="color" id="color" />
+        <button id="flood-fill">Fill: <span class = 'off'>Off</span></button>
         <button id="reset">Reset</button>
       </div>
       <div id="container"></div>
       <div class="utilities">
-        <button id="borders">Border: On</button>
+        <button id="borders">Border: <span class = 'on'>On</span></button>
         <input type="number" name="grid-size" id="grid-size" value="16" />
         <button id="download">Download</button>
       </div>
     </main>
-    <script src="./src/index.js" defer></script>
-    <div style="margin: -9999px">
-      Icons made by
-      <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
-      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-    </div>
   </body>
 </html>

@@ -1,86 +1,127 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* + * {
+  margin-top: 1.5em;
+}
+
+:root {
+  --grid-size: 16;
+  --color: #000;
+  --eraser: #fff;
+  --outline: 1px solid black;
+  --outline-focus: 3px solid red;
+  --edge: 30em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  color: #fff;
+  font-weight: 400;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #06aace;
+  overflow: hidden;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  place-items: center;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #c5e0e8;
+  height: var(--edge);
+  width: var(--edge);
+}
+
+#container > div {
+  margin: 0;
+  height: calc(var(--edge) / var(--grid-size));
+  width: calc(var(--edge) / var(--grid-size));
+  outline: var(--outline);
+  cursor: url('./index.js') 2 32, crosshair;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.utilities {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 30em;
+}
+
+.utilities > button {
+  margin-top: 1.5em;
+}
+
+button,
+input {
+  height: 3em;
+  width: 10em;
+  font-size: 1.25em;
+  text-align: center;
+}
+
+button {
+  color: white;
+  border-radius: 1em;
+  background-color: darkorange;
+}
+
+#grid-size {
+  height: 1.25em;
+  width: 4em;
+  font-size: 3em;
+}
+
+span.off {
+  color: red;
+}
+
+span.on {
+  color: green;
+}
+
+@media (max-width: 900px) {
+    :root{
+    --edge: 25em;
+    }
+  main {
+    grid-template-columns: none;
+    grid-template-rows: 0.1fr 1fr 0.1fr;
+    gap: 0.5em 0;
+}
+
+  #container {
     margin: 0;
-    padding: 0;
-}
-
-*+*{
-    margin-top: 1.5em;
-}
-
-:root{
-    --grid-size: 16;
-    --color: #000;
-    --eraser: #fff; 
-    --outline: 1px solid black;
-    --outline-focus: 3px solid red;
-}
-
-h1{
-    text-align: center;
-    font-size: 3em;
-    color: #fff;
-    font-weight: 400;
-}
-
-body{
-    font-family: 'Montserrat', sans-serif;
-    background: #06aace;
-    overflow: hidden;
-}
-
-main{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    place-items: center;
-}
-
-#container{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #c5e0e8;
-    height: 30em;
-    width: 30em;
-}
-
-#container>div{
-    margin: 0;
-    height: calc(30em / var(--grid-size));
-    width: calc(30em / var(--grid-size));
-    outline: var(--outline);
-    cursor: url('./Paintbrush.png') 2 36, crosshair;
-}
-
-.grid:focus, .grid:active{
-    border: var(--outline-focus);
-}
-.utilities{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 30em;
-}
-
-.utilities>button{
-    margin-top: 1.5em;
-}
-
-button, input{
+  }
+  .utilities {
     height: 3em;
-    width: 10em;
-    font-size: 1.25em;
-    text-align: center;
+    flex-direction: row;
+    margin: 0;
 }
 
-button{
-    color: white;
-    border-radius: 1em;
-    background-color: darkorange;
-}
+.utilities > button,
+.utilities > input {
+    margin: 0;
+    border-radius: 0;
+    height: 3em;
+    width: 6em;
+    font-size: 1em;
+  }
 
-#grid-size{
-    height: 1.25em;
-    width: 4em;
-    font-size: 3em;
+  #grid-size {
+    font-size: 2em;
+  }
 }
